@@ -61,10 +61,10 @@ function fill(cellId, player) {
 function checkWin(table, player) {
     let currentStatus = table.reduce((a, e, i) => (e==player) ? a.concat(i) : a, []);
     let won = null;
-    //console.log(currentStatus);
+
     let iterator = winningcombinations.entries();
     for (let [index, win] of iterator) {
-        //console.log(index + " " +  win);
+        
         let t = [];
         if(win.every(elem => currentStatus.indexOf(elem) > -1)) {
             won = {index: index, player: player};
@@ -75,9 +75,7 @@ function checkWin(table, player) {
 }
 
 function gameover(playerwon) {
-    //let winnigcombination = 
-    //let winningCombination = ;
-    
+
     for (let id of winningcombinations[playerwon.index]) {
         document.getElementById(id).style.backgroundColor =  (playerwon.player == human) ? "blue" :"red";
     }
@@ -103,7 +101,6 @@ function checkTie() {
 }
 
 function emptyTableRows() {
-    //console.log(table.filter(s => s == -1));
     let emptyTableRows = [];
     for (var i=1; i<=9; i++) {
         if (table[i] == -1) {
@@ -120,7 +117,6 @@ function declare(result) {
 function bestSpot() {
     console.log("Hello" + " " + minimax(table, ai).index);
     return minimax(table, ai).index;
-    //return emptyTableRows()[0];
 }
 
 function minimax(table, player) {
@@ -173,10 +169,8 @@ function minimax(table, player) {
             }
         }
     }
-    //console.log(bestMove);
     console.log(moves[bestMove].index);
     return moves[bestMove];
 }
 
 prepareBoard();
-//fill(bestSpot(), ai);
