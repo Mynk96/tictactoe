@@ -1,6 +1,6 @@
 module.exports = {
     entry: "./app/index.js",
-    mode: "development",
+    mode: "production",
     output: {
         path: "/home/mynk96/ai/build",
         filename: "bundle.js"
@@ -18,6 +18,7 @@ module.exports = {
     devServer: {
         port:3000,
         contentBase: '/home/mynk96/ai/build',
-        inline: true
+        inline: true,
+        host:'10.4.7.239'
     }
 }

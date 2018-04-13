@@ -20,14 +20,16 @@ function intializeTableValues() {
 }
 
 document.getElementById("replay").addEventListener("click", prepareBoard);
+showButtonsAndInitializeHandlers();
 
 function prepareBoard() {
     clear();
     intializeTableValues();
-    document.getElementById("result").innerHTML = "";
-    for(var i=0; i<cells.length; i++) {
-        cells[i].addEventListener('click', playerTurn);
-    }
+    //document.getElementById("result").innerHTML = "";
+    declare("");
+    showButtonsAndInitializeHandlers();
+    removeEventListenerHandlers();
+    //document.getElementById("game").style.display="none";
 }
  
 
@@ -44,6 +46,9 @@ function playerTurn(cell) {
         if (!checkWin(table, human) && !checkTie()) {
             //console.log("Hello" + " " + bestSpot());
             fill(bestSpot(), ai);
+            if (checkTie()) {
+                return;
+            }
         }
     }
 
@@ -80,9 +85,7 @@ function gameover(playerwon) {
         document.getElementById(id).style.backgroundColor =  (playerwon.player == human) ? "blue" :"red";
     }
 
-    for (var i = 0; i < cells.length; i++) {
-        cells[i].removeEventListener('click', playerTurn);
-    }
+    removeEventHandlersFromSquares();
 
     if (playerwon.player === '0') {
         declare("You Win!");
@@ -115,7 +118,6 @@ function declare(result) {
 }
 
 function bestSpot() {
-    console.log("Hello" + " " + minimax(table, ai).index);
     return minimax(table, ai).index;
 }
 
@@ -173,4 +175,56 @@ function minimax(table, player) {
     return moves[bestMove];
 }
 
+function first() {
+    
+    removeButtons();
+    addClickEventsToSquares();
+    document.getElementById("first").removeEventListener("click", first);
+    document.getElementById("second").removeEventListener("click", second);
+    //document.getElementById("game").style.display="block";
+}
+
+function second() {
+    
+    //document.getElementById("game").style.display="block";
+    removeButtons();
+    selectFromRandomCorners();
+    addClickEventsToSquares();
+    document.getElementById("first").style.display = "none";
+    document.getElementById("second").style.display = "none";
+    
+    
+}
+
+function addClickEventsToSquares() {
+    for(var i=0; i<cells.length; i++) {
+        cells[i].addEventListener('click', playerTurn);
+    }    
+}
+
+function removeButtons() {
+    document.getElementById("first").style.display = "none";
+    document.getElementById("second").style.display = "none";
+}
+
+function showButtonsAndInitializeHandlers() {
+    document.getElementById("first").style.display = "block";
+    document.getElementById("second").style.display = "block";
+    document.getElementById("first").addEventListener("click", first);
+    document.getElementById("second").addEventListener("click", second);
+
+}
+
+function selectFromRandomCorners() {
+    var arr = [1, 3, 7, 9];
+    var rand = Math.floor(Math.random()*4);
+    console.log(arr[rand]);
+    fill(arr[rand], ai);
+}
+
+function removeEventHandlersFromSquares() {
+    for (var i = 0; i < cells.length; i++) {
+        cells[i].removeEventListener('click', playerTurn);
+    }
+}
 prepareBoard();

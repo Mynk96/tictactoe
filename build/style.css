@@ -33,19 +33,30 @@ table tr td:last-child {
     border-right:0;
 }
 
-button {
+#replay {
     position: absolute;
-    left:44%;
     margin-top: 40em;
-    //margin-left:42em;
+    left:44%;
+}
+
+#first {
+    position: absolute;
+    margin-top: 32em;
     height: 3em;
-    width: 5em;
+    width: 8em;
+}
+
+#second {
+    position: absolute;
+    margin-top: 32em;
+    height: 3em;
+    width: 8em;
 }
 
 div {
     position: absolute;
     left :42%;
-    margin-top:16em;
+    margin-top:15em;
     font-size: 28px;
     font-family: "Comic Sans Ms", cursive, sans-serif;
     text-align: center;

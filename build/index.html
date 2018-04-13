@@ -1,10 +1,17 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>    
     <body>
         
-        <table class>
+        <table id="game1">
             <tr>
                 <td class = "cell" id="1"></td>
                 <td class = "cell" id="2"></td>
@@ -22,7 +29,9 @@
             </tr>  
         </table>
         <div id="result"></div>
-        <button id="replay">Replay!</button>
+        <button id="replay" class="btn btn-success  btn-large">  Replay!  </button>
+        <button class ="col-md-offset-4 col-xs-offset-3 btn btn-info btn-large" id="first">Play First!</button>
+        <button class="col-md-offset-6 col-xs-offset-6 btn btn-info btn-large" id="second">Play Second!</button>
     </body>
     <script type="text/javascript" src="bundle.js"></script>
 </html> 
