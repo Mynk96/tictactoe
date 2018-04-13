@@ -25,11 +25,9 @@ showButtonsAndInitializeHandlers();
 function prepareBoard() {
     clear();
     intializeTableValues();
-    //document.getElementById("result").innerHTML = "";
     declare("");
     showButtonsAndInitializeHandlers();
     removeEventListenerHandlers();
-    //document.getElementById("game").style.display="none";
 }
  
 
@@ -44,7 +42,6 @@ function playerTurn(cell) {
     if (table[cell.target.id] === -1) {
         fill(cell.target.id, human);
         if (!checkWin(table, human) && !checkTie()) {
-            //console.log("Hello" + " " + bestSpot());
             fill(bestSpot(), ai);
             if (checkTie()) {
                 return;
@@ -95,7 +92,7 @@ function gameover(playerwon) {
 }
 
 function checkTie() {
-    //console.log(emptyTableRows().length);
+
     if(emptyTableRows().length == 0){
         declare("Tie Game");
         return true;
@@ -181,12 +178,10 @@ function first() {
     addClickEventsToSquares();
     document.getElementById("first").removeEventListener("click", first);
     document.getElementById("second").removeEventListener("click", second);
-    //document.getElementById("game").style.display="block";
 }
 
 function second() {
     
-    //document.getElementById("game").style.display="block";
     removeButtons();
     selectFromRandomCorners();
     addClickEventsToSquares();
@@ -218,7 +213,6 @@ function showButtonsAndInitializeHandlers() {
 function selectFromRandomCorners() {
     var arr = [1, 3, 7, 9];
     var rand = Math.floor(Math.random()*4);
-    console.log(arr[rand]);
     fill(arr[rand], ai);
 }
 
