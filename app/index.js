@@ -27,7 +27,7 @@ function prepareBoard() {
     intializeTableValues();
     declare("");
     showButtonsAndInitializeHandlers();
-    removeEventListenerHandlers();
+    removeEventHandlersFromSquares();
 }
  
 

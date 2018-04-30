@@ -1,8 +1,9 @@
+const path = require("path");
 module.exports = {
     entry: "./app/index.js",
     mode: "production",
     output: {
-        path: "/home/mynk96/ai/build",
+        path: path.resolve(__dirname, "build"),
         filename: "bundle.js"
     },
     module: {
@@ -17,8 +18,7 @@ module.exports = {
     },
     devServer: {
         port:3000,
-        contentBase: '/home/mynk96/ai/build',
-        inline: true,
-        host:'10.4.7.239'
+        contentBase: path.join(__dirname, 'build'),
+        inline: true
     }
 }
